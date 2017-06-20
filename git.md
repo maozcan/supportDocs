@@ -1,4 +1,4 @@
-# Git Reference
+s# Git Reference
 
 ## Getting and creating git projects
 In order to do anything in Git, we need to have a Git repository. This is where Git stores the data for the snapshots you are saving.

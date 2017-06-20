@@ -1,0 +1,28 @@
+Docker command line:
+*********************
+
+
+Transmission-OpenVPN
+https://hub.docker.com/r/haugene/transmission-openvpn/
+
+docker run --cap-add=NET_ADMIN --device=/dev/net/tun -d \
+    --dns=8.8.8.8 \
+    --dns=8.8.4.4 \
+    -v /Users/Mehmet/Downloads/rTorrent/:/data \
+    -v /etc/localtime:/etc/localtime:ro \
+    -e "OPENVPN_PROVIDER=PIA" \
+    -e "OPENVPN_CONFIG=Netherlands" \
+    -e "OPENVPN_USERNAME=p1031923" \
+    -e "OPENVPN_PASSWORD=USkv2F7sfcYS" \
+    -e "OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60" \
+    -e "LOCAL_NETWORK=192.168.0.0/24" \
+    -p 9091:9091 \
+    haugene/transmission-openvpn
+
+________________________________________________________________
+PHP Web Server
+
+docker run -d --name my-php-webserver \
+    -p 8080:80 \
+    -v "/Users/Mehmet/Box Sync/Mehmet-3D/MyProjects/d3js/":/var/www/html/ \
+    php:apache
