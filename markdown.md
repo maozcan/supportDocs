@@ -182,9 +182,21 @@ For example:
 ## Tables
 
 | Day     | Meal    | Price |
-| --------|---------|-------|
+| --------|---------|------:|
 | Monday  | pasta   | $6    |
 | Tuesday | chicken | $8    |
+
+
+|             |          Grouping           ||
+First Header  | Second Header | Third Header |
+ ------------ | :-----------: | -----------: |
+Content       |          *Long Cell*        ||
+Content       |   **Cell**    |         Cell |
+
+New section   |     More      |         Data |
+And more      | With an escaped '\|'         ||  
+[Prototype table]
+
 
 ## Backslash escapes
 Certain characters can be escaped with a preceding backslash to preserve the literal display of a character instead of its special Markdown meaning. This applies to the following characters:
@@ -242,5 +254,3 @@ or
 
 - [x] Task 1
 - [ ] Task 2
-
-  

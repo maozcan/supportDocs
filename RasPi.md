@@ -148,3 +148,25 @@ Host key verification failed.
 ```
 > ssh-keygen -R raspberrypi.local
 ```
+
+### Fix "Sub-process /usr/bin/dpkg returned an error code (2)” during apt-get upgrade
+
+```console
+sudo dpkg --configure -a
+sudo apt-get -f install
+sudo apt-get clean
+sudo apt-get update && sudo apt-get upgrade
+```
+
+### Clear Logfiles:
+Must be root:
+```console
+sudo su
+cat /dev/null > /path/to/logfile
+# to empty all the logs in a directory
+for i in /var/log/*; do cat /dev/null > $i; done
+```
+To keep backup of the log file:
+```console
+cp /var/log/mail.log /var/log/mail.log.1 && echo -n "" > /var/log/mail.log
+```
