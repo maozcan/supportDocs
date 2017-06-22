@@ -9,8 +9,8 @@ Download the latest Raspbian Jesse image from https://www.raspberrypi.org/downlo
 __If using a Mac:__
 
 Before attaching the SD card to your Mac, open `Terminal` and see the list of disks on the system using `diskutil list` and you'll see something like this:
-```
-> diskutil list
+```console
+diskutil list
 
 /dev/disk0 (internal):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
@@ -30,8 +30,8 @@ Before attaching the SD card to your Mac, open `Terminal` and see the list of di
 
 Now, attach the SD card to Mac using a card reader, etc. and run the same command again.
 
-```
-> diskutil list
+```console
+diskutil list
 
 /dev/disk0 (internal):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
@@ -58,25 +58,25 @@ You will notice that the attached SD card is now visible as `/dev/disk2`. Note t
 
 Now, unmount the disk using
 
-```
-> diskutil unmountDisk /dev/disk2
+```console
+diskutil unmountDisk /dev/disk2
 ```
 
 Move to the folder that you have the downloaded image file
 
-```
-> cd Downloads
+```console
+cd Downloads
 ```
 
 Write the image file to the SD card using dd utility
 
-```
+```console
 sudo dd bs=1m if=<image-file-name> of=/dev/rdisk<disk-number>
 
 ```
 
-```
-> sudo dd bs=1m if=2017-04-10-raspbian-jessie-lite.img of=/dev/rdisk2
+```console
+sudo dd bs=1m if=2017-04-10-raspbian-jessie-lite.img of=/dev/rdisk2
 
 Password:
 1237+1 records in
@@ -88,14 +88,14 @@ Password:
 
 To enable SSH, we need to create a file named 'ssh' in the boot folder. (The content of the file is not important.)
 
-```
-> sudo touch /Volumes/boot/ssh
+```console
+sudo touch /Volumes/boot/ssh
 ```
 
 We can also add our wpa-supplicant.conf file to the boot folder, so that Pi will try connecting to wi-fi at first boot.
 
-```
-> sudo touch /Volumes/boot/wpa-supplicant.conf
+```console
+sudo touch /Volumes/boot/wpa-supplicant.conf
 ```
 
 The content of the file should be like:
@@ -115,19 +115,19 @@ You can now unmount the SD card using `diskutil unmountDisk /dev/disk2` or eject
 
 Insert the SD card to Pi and plug-in power. Wait a few seconds to allow Pi to boot. And from Terminal, try pinging the device.
 
-```
-> ping raspberrypi.local
+```console
+ping raspberrypi.local
 ```
 
 Once you get a ping, you can try connecting via SSH
 
-```
-> ssh pi@raspberrypi.local
+```console
+ssh pi@raspberrypi.local
 ```
 
 If you get an error message like
 
-```
+```console
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -145,7 +145,7 @@ Host key verification failed.
 
 ... you must remove the previously saved ssh key by running
 
-```
+```console
 > ssh-keygen -R raspberrypi.local
 ```
 
